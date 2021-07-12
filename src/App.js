@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-        <h1>Wating Apps</h1>
+        <h1>Waiting Apps</h1>
         <div className="_sale_booster_countdown_wrap _sale-booster-countdown-bottom">
           <p className="_sale-booster-hits"> Meet Your Husband left </p>
             
