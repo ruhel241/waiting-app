@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+._sale-booster-countdown-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+}
+
+.waiting_days_count {
+  background: #9B4DCA;
+  color: #ffff;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px 5px 15px;
+  /* min-width: 61px; */
+  font-family: Open Sans;
+  
+}
+
+._sale-booster-countdown-bottom ._sale-booster-countdown .waiting-countdown{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer {
+  background: #9B4DCA;
+  color: #ffff;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px 5px 15px;
+  /* min-width: 61px; */
+  font-family: Open Sans;
+}
+
+
+._sale-booster-countdown-bottom ._sale-discount-time {
+  font-size: 38px;
+  font-family: Open Sans;
+  display: block;
+  line-height: 1;
+  font-weight: 600;
+}
+
+._sale-booster-countdown-bottom ._sale-discount-units {
+  margin-top: -3px;
+  font-family: Open Sans;
+  font-size: 28px;
+  text-transform: lowercase;
+}
+
+
+._sale-booster-countdown-bottom ._sale-booster-hits {
+  color: #9a07d7;
+  font-weight: 600;
+  /* margin-top: 4px; */
+  font-size: 25px;
+  /* margin: 0; */
+  font-family: Open Sans;
+}
+
+
+span._sale-discount-time._timer_days.ddd{
+  font-size: 80px;
+}
+span._sale-discount-units.sss {
+  font-size: 36px;
+}
