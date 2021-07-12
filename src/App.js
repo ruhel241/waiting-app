@@ -42,7 +42,7 @@ function App() {
               </div>
 
             </div>
-          <p className="_sale-booster-hits"> when the day and timer hits zero, your heatbeat so fast..... </p>
+          <p className="_sale-booster-hits"> when the day and timer hits zero, your heatbeat will go so fast..... </p>
         </div>
     </div>
   );
