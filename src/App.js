@@ -74,7 +74,9 @@ function App() {
             </div>
           <p className="_sale-booster-hits"> When the day and timer hits zero, your heatbeat will go so fast..... </p>
 
-          <img src="/images/2.jpg" alt="asdfas"/>
+          <div className="image"> 
+            <img src="/images/2.jpg" alt="asdfas"/>
+          </div> 
           
 
         </div>
