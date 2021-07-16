@@ -8,7 +8,38 @@ p {
   font-size: 40px;
   margin-top: 0px;
 }
+
+p, h1 {
+            color: green;
+        }
+
 </style>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    /* Add "https://api.ipify.org?format=json" statement
+       this will communicate with the ipify servers in
+       order to retrieve the IP address $.getJSON will
+       load JSON-encoded data from the server using a
+       GET HTTP request */
+
+    // $.getJSON("https://api.ipify.org?format=json",function(data) {
+    //     // Setting text of element P with id gfg
+    //     $("#gfg").html(data.ip);
+    // })
+
+    // $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
+    //     console.log(JSON.stringify(data, null, 2));
+    // });
+
+    $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
+        let ttt = JSON.stringify(data, null, 2);
+         $("#gfg").html(data.country_name);
+      console.log(ttt);
+    });
+</script>
+
+
 </head>
 <body>
     <p id="days"></p>
@@ -16,6 +47,18 @@ p {
     <p id="mins"></p>
     <p id="secs"></p>
     <h2 id="end"></h2>
+
+ <center>
+        <h1>GeeksforGeeks</h1>
+        <h3>Public IP Address of user is:</h3>
+  
+        <p id="gfg"></p>
+  
+    </center>
+
+
+
+
     <script>
     // The data/time we want to countdown to
     var countDownDate = new Date("Nov 10, 2021 10:00:00").getTime();
@@ -53,3 +96,4 @@ p {
     </script>
 </body>
 </html>
+

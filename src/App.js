@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import $ from 'jquery';
 
 function App() {
 
@@ -35,31 +36,37 @@ function App() {
       }
   }, 1000);
 
+  $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
+    let category = '"Partner"';
+    if(data.country_name === 'Bangladesh') {
+      category = '"Wife"';
+    } else if (data.country_name === 'United States') {
+      category = '"Husband"';
+    } 
+    document.getElementById("category").innerHTML = category;
+  });
 
   return (
     <div className="App">
-        <h1>Waiting Apps</h1>
+        <h1 className="apps-name">Waiting Apps</h1>
        
-        {/* <h2 id="end"></h2> */}
-
         <div className="_sale_booster_countdown_wrap _sale-booster-countdown-bottom">
-          <p className="_sale-booster-hits"> Meet Your Husband left </p>
+          <p className="_sale-booster-hits">
+            You are waiting to meet your <span id="category"></span> and the time is left
+          </p>
             
             <div className="_sale-booster-countdown">
-              
               <div className="waiting_days_count">
                 <div className="_sale-discount-countdown-time"> 
                   <span className="_sale-discount-time _timer_days ddd" id="_timer_days"></span>  
                   <span className="_sale-discount-units sss">days</span>
                 </div>
               </div>
-
               <div className="waiting-countdown">
                 <div className="_sale-discount-countdown-timer">  
                   <span className="_sale-discount-time _timer_hours" id="_timer_hours"></span>  
                   <span className="_sale-discount-units">hours</span>
                 </div>
-
                 <div className="_sale-discount-countdown-timer">
                 <span className="_sale-discount-time _timer_minutes" id="_timer_minutes"></span>  
                   <span className="_sale-discount-units">minutes</span>
@@ -70,15 +77,14 @@ function App() {
                   <span className="_sale-discount-units">seconds</span>
                 </div>
               </div>
-
             </div>
-          <p className="_sale-booster-hits"> When the day and timer hits zero, your heatbeat will go so fast..... </p>
+          <p className="_sale-booster-hits">
+             When the day and timer hits zero, your heartbeat will go so fast.....
+          </p>
 
           <div className="image"> 
             <img src="/images/2.jpg" alt="asdfas"/>
-          </div> 
-          
-
+          </div>  
         </div>
     </div>
   );
