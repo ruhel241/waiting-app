@@ -5,7 +5,7 @@ import $ from 'jquery';
 function App() {
 
   // The data/time we want to countdown to
-  const countDownDate = new Date("Nov 23, 2021 10:00:00").getTime();
+  const countDownDate = new Date("Dec 28, 2021 10:00:00").getTime();
 
   // Run myfunc every second
   const myfunc = setInterval( () => {
