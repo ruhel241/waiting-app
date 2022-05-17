@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.date-time label{
+  font-size: 18px;
+  font-weight: 700;
+  font-family: cursive;
+  color: #9a07d7;
+}
+.date-time-btn {
+  margin-top: 20px;
+  margin-left: 60px;
+}
+.submit-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 9px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.reset-button {
+  background-color: #f44336; /* Green */
+  border: none;
+  color: white;
+  padding: 9px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.react-datetime-picker__wrapper {
+  border: thin solid #9a07d7 !important;
+  border-radius: 3px;
+}
+
+.react-datetime-picker__clear-button {
+  display: none;
+}
