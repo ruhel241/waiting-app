@@ -9,14 +9,45 @@ class App extends Component  {
   constructor(props) {
     super(props);
     this.state = {
-      endDateTime: ''
+      endDateTime: '',
+      showTimer: false
+      // isEndDateTime: ''
     }
   }
 
-  componentDidMount(){
+  // componentWillUpdate() {
+  //   // if (this.state.isEndDateTime) {
+  //     this.setState({
+  //       endDateTime: new Date(localStorage.getItem('WaitingEndDate'))
+  //     })
+  //   // }
+  // }
+
+  componentDidMount() {
     this.getCategory();
+
+    // this.setState({
+    //   isEndDateTime: localStorage.getItem('WaitingEndDate'),
+    //   // endDateTime: new Date(localStorage.getItem('WaitingEndDate'))
+    // })
+
+    if (localStorage.getItem('WaitingEndDate')) {
+      this.getData();
+    }
   }
- 
+  
+
+  getData() {
+    // console.log('test: ' + localStorage.getItem('WaitingEndDate'));
+
+    var test = localStorage.getItem('WaitingEndDate');
+
+    this.setState({
+      endDateTime: new Date(parseInt(test))
+    })
+  }
+
+
   getCategory = () => {
     var category = '"Partner"'; 
     $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
@@ -29,9 +60,17 @@ class App extends Component  {
     });
   };
 
+  showTimerHandler = () => {
+    this.setState({
+      showTimer: !this.state.showTimer
+    })
+  }
+
   render() {
     const {
-      endDateTime
+      endDateTime,
+      showTimer,
+      // isEndDateTime
     } = this.state;
 
     const changeHandler = (e) => {
@@ -39,21 +78,26 @@ class App extends Component  {
       this.setState({
         endDateTime: e
       })
+      submitHandler(e);
+      // console.log(e);
     }
 
-    const submitHandler = () => {
+    const submitHandler = (endDateTime) => {
       let EndDate = new Date(endDateTime).getTime();
       localStorage.setItem('WaitingEndDate', EndDate);
       window.location.reload(true);
     }
 
-    const resetTimer = () => {
-        localStorage.removeItem('WaitingEndDate');
-        window.location.reload(true);
-    }
+    // const resetTimer = () => {
+    //     localStorage.removeItem('WaitingEndDate');
+    //     window.location.reload(true);
+    // }
 
     var getCountDownDate = localStorage.getItem('WaitingEndDate');
     
+    // console.log(moment(getCountDownDate). );
+
+
     if (!getCountDownDate) {
       var present_date = new Date();
       getCountDownDate  = present_date.setDate(present_date.getDate() - 1);
@@ -89,19 +133,30 @@ class App extends Component  {
 
     return (
       <div className="App">
-          <h1 className="apps-name">Waiting App</h1>
-          <div className="end-date-time-box">
-            <div className="date-time">
-              <label> End Time </label>
-              <DateTimePicker onChange={changeHandler} value={endDateTime} />
-            </div>
-            
-            <div className="date-time-btn">
-              <button className="submit-button" onClick={submitHandler}>Submit</button>
-              <button className="reset-button" onClick={resetTimer}>Reset</button>
-            </div>
-          </div>
-
+          <h1 className="apps-name">
+            Waiting App 
+            <button className="show-timer" onClick={this.showTimerHandler}> click </button>
+          </h1>
+          
+          {
+            showTimer && (
+              <div className="end-date-time-box">
+                <div className="date-time">
+                  <label> End Time </label>
+                  <DateTimePicker onChange={changeHandler} value={endDateTime} />
+                </div>
+                
+                {/* <div className="date-time-btn">
+                  { !isEndDateTime ? 
+                      <button className="submit-button" onClick={submitHandler}>&#10003;</button>
+                    : <button className="reset-button" onClick={resetTimer}>X</button>
+                  }
+                  
+                </div> */}
+              </div>
+            )
+          }
+          
           <div className="_sale_booster_countdown_wrap _sale-booster-countdown-bottom">
             <p className="_sale-booster-hits">
               You are waiting to meet your <span id="category"></span> and the time is left

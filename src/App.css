@@ -37,7 +37,14 @@
   }
 }
 
-.date-time label{
+.date-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-time label {
   font-size: 18px;
   font-weight: 700;
   font-family: cursive;
@@ -81,3 +88,20 @@
 .react-datetime-picker__clear-button {
   display: none;
 }
+
+
+.show-timer {
+  position: absolute;
+  right: 569px;
+  top: 45px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .show-timer {
+    position: absolute;
+    right: 21px;
+    top: 44px;
+  }
+}
+
