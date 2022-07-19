@@ -15,7 +15,6 @@ class App extends Component  {
     }
   }
 
-
   componentDidMount() {
     // this.getCategory();
 
@@ -26,66 +25,20 @@ class App extends Component  {
 
     if (localStorage.getItem('WaitingEndDate')) {
       this.getData();
+    } else {
+      document.getElementById("_timer_days").innerHTML = 0
+      document.getElementById("_timer_hours").innerHTML = 0 
+      document.getElementById("_timer_minutes").innerHTML = 0
+      document.getElementById("_timer_seconds").innerHTML = 0
     }
   }
   
-
   getData() {
-    var test = localStorage.getItem('WaitingEndDate');
-
-    this.setState({
-      endDateTime: new Date(parseInt(test))
-    })
-  }
-
-
-  // getCategory = () => {
-  //   var category = '"Partner"'; 
-  //   $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
-  //     if (data.country_name === 'Bangladesh') {
-  //        category = '"Partner"'
-  //       //  category = '"Wife"'
-  //     } else if (data.country_name === 'United States') {
-  //       category = '"Husband"'
-  //     } 
-  //     document.getElementById("category").innerHTML = category;
-  //   });
-  // };
-
-  showTimerHandler = () => {
-    this.setState({
-      showTimer: !this.state.showTimer
-    })
-  }
-
-  render() {
-    const {
-      endDateTime,
-      showTimer,
-      isEndDateTime
-    } = this.state;
-
-    const changeHandler = (e) => {
-      this.setState({
-        endDateTime: e,
-        isEndDateTime: false
-      })
-      
-    }
-
-    const submitHandler = () => {
-      let EndDate = new Date(this.state.endDateTime).getTime();
-      localStorage.setItem('WaitingEndDate', EndDate);
-      window.location.reload(true);
-    }
-
-    const resetTimer = () => {
-        localStorage.removeItem('WaitingEndDate');
-        window.location.reload(true);
-    }
-
     var getCountDownDate = parseInt(localStorage.getItem('WaitingEndDate'));
-    
+
+    this.setState({
+      endDateTime: new Date(getCountDownDate)
+    })
    
     if (!getCountDownDate) {
       var present_date = new Date();
@@ -122,6 +75,52 @@ class App extends Component  {
             document.getElementsByClassName('timer-hide')[0].style.display = 'block';
           }
     }, 1000);
+  }
+
+
+  // getCategory = () => {
+  //   var category = '"Partner"'; 
+  //   $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
+  //     if (data.country_name === 'Bangladesh') {
+  //        category = '"Partner"'
+  //       //  category = '"Wife"'
+  //     } else if (data.country_name === 'United States') {
+  //       category = '"Husband"'
+  //     } 
+  //     document.getElementById("category").innerHTML = category;
+  //   });
+  // };
+
+  showTimerHandler = () => {
+    this.setState({
+      showTimer: !this.state.showTimer
+    })
+  }
+
+  render() {
+    const {
+      endDateTime,
+      showTimer,
+      isEndDateTime
+    } = this.state;
+
+    const changeHandler = (e) => {
+      this.setState({
+        endDateTime: e,
+        isEndDateTime: false
+      })
+    }
+
+    const submitHandler = () => {
+      let EndDate = new Date(this.state.endDateTime).getTime();
+      localStorage.setItem('WaitingEndDate', EndDate);
+      window.location.reload(true);
+    }
+
+    const resetTimer = () => {
+        localStorage.removeItem('WaitingEndDate');
+        window.location.reload(true);
+    }
 
     return (
       <div className="App">
