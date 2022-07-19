@@ -100,6 +100,10 @@ span._sale-discount-units.sss {
 }
 
 .apps-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   font-family: cursive;
   color: #9a07d7;
   font-size: 35px;

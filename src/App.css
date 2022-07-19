@@ -1,5 +1,16 @@
+#root {
+  background: rgb(0 0 0);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .App {
   text-align: center;
+  border: solid 1px;
+  width: 30%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 5px;
 }
 
 .App-logo {
@@ -92,16 +103,19 @@
 
 .show-timer {
   position: absolute;
-  right: 569px;
-  top: 45px;
+  right: 22px;
 }
 
 
 @media only screen and (max-width: 600px) {
-  .show-timer {
-    position: absolute;
-    right: 21px;
-    top: 44px;
+  #root {
+    background: initial;
+    padding: 0;
   }
+ 
+  .App {
+    width: initial;
+    border: initial;
+  } 
 }
 
