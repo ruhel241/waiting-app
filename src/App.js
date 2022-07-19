@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import React, { Component } from "react";
 import './App.css';
-import $ from 'jquery';
+// import $ from 'jquery';
 import DateTimePicker from 'react-datetime-picker';
 
 class App extends Component  {
@@ -10,26 +10,19 @@ class App extends Component  {
     super(props);
     this.state = {
       endDateTime: '',
-      showTimer: false
-      // isEndDateTime: ''
+      showTimer: false,
+      isEndDateTime: false
     }
   }
 
-  // componentWillUpdate() {
-  //   // if (this.state.isEndDateTime) {
-  //     this.setState({
-  //       endDateTime: new Date(localStorage.getItem('WaitingEndDate'))
-  //     })
-  //   // }
-  // }
 
   componentDidMount() {
-    this.getCategory();
+    // this.getCategory();
 
-    // this.setState({
-    //   isEndDateTime: localStorage.getItem('WaitingEndDate'),
-    //   // endDateTime: new Date(localStorage.getItem('WaitingEndDate'))
-    // })
+    this.setState({
+      isEndDateTime: !!parseInt(localStorage.getItem('WaitingEndDate')),
+      // endDateTime: new Date(localStorage.getItem('WaitingEndDate'))
+    })
 
     if (localStorage.getItem('WaitingEndDate')) {
       this.getData();
@@ -38,8 +31,6 @@ class App extends Component  {
   
 
   getData() {
-    // console.log('test: ' + localStorage.getItem('WaitingEndDate'));
-
     var test = localStorage.getItem('WaitingEndDate');
 
     this.setState({
@@ -48,17 +39,18 @@ class App extends Component  {
   }
 
 
-  getCategory = () => {
-    var category = '"Partner"'; 
-    $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
-      if (data.country_name === 'Bangladesh') {
-         category = '"Wife"'
-      } else if (data.country_name === 'United States') {
-       category = '"Husband"'
-      } 
-      document.getElementById("category").innerHTML = category;
-    });
-  };
+  // getCategory = () => {
+  //   var category = '"Partner"'; 
+  //   $.getJSON('https://json.geoiplookup.io/?callback=?', function(data) {
+  //     if (data.country_name === 'Bangladesh') {
+  //        category = '"Partner"'
+  //       //  category = '"Wife"'
+  //     } else if (data.country_name === 'United States') {
+  //       category = '"Husband"'
+  //     } 
+  //     document.getElementById("category").innerHTML = category;
+  //   });
+  // };
 
   showTimerHandler = () => {
     this.setState({
@@ -70,34 +62,32 @@ class App extends Component  {
     const {
       endDateTime,
       showTimer,
-      // isEndDateTime
+      isEndDateTime
     } = this.state;
 
     const changeHandler = (e) => {
-      console.log(e);
+      console.log(this.state.isEndDateTime);
       this.setState({
-        endDateTime: e
+        endDateTime: e,
+        isEndDateTime: false
       })
-      submitHandler(e);
-      // console.log(e);
+      
     }
 
-    const submitHandler = (endDateTime) => {
-      let EndDate = new Date(endDateTime).getTime();
+    const submitHandler = () => {
+      let EndDate = new Date(this.state.endDateTime).getTime();
       localStorage.setItem('WaitingEndDate', EndDate);
       window.location.reload(true);
     }
 
-    // const resetTimer = () => {
-    //     localStorage.removeItem('WaitingEndDate');
-    //     window.location.reload(true);
-    // }
+    const resetTimer = () => {
+        localStorage.removeItem('WaitingEndDate');
+        window.location.reload(true);
+    }
 
-    var getCountDownDate = localStorage.getItem('WaitingEndDate');
+    var getCountDownDate = parseInt(localStorage.getItem('WaitingEndDate'));
     
-    // console.log(moment(getCountDownDate). );
-
-
+   
     if (!getCountDownDate) {
       var present_date = new Date();
       getCountDownDate  = present_date.setDate(present_date.getDate() - 1);
@@ -142,24 +132,24 @@ class App extends Component  {
             showTimer && (
               <div className="end-date-time-box">
                 <div className="date-time">
-                  <label> End Time </label>
+                  <label> End Time {this.state.isEndDateTime} </label>
                   <DateTimePicker onChange={changeHandler} value={endDateTime} />
                 </div>
                 
-                {/* <div className="date-time-btn">
+                <div className="date-time-btn">
                   { !isEndDateTime ? 
-                      <button className="submit-button" onClick={submitHandler}>&#10003;</button>
+                      <button className="submit-button" onClick={submitHandler} disabled={!this.state.endDateTime}>&#10003;</button>
                     : <button className="reset-button" onClick={resetTimer}>X</button>
                   }
-                  
-                </div> */}
+                </div>
+                 
               </div>
             )
           }
           
           <div className="_sale_booster_countdown_wrap _sale-booster-countdown-bottom">
             <p className="_sale-booster-hits">
-              You are waiting to meet your <span id="category"></span> and the time is left
+              You are waiting to meet your <span id="category">"Partner"</span> and the time is left
             </p>
               
               <div className="_sale-booster-countdown">
@@ -190,7 +180,7 @@ class App extends Component  {
             </p>
 
             <div className="image"> 
-              <img src="/images/2.jpg" alt="asdfas"/>
+              <img src="/images/4.jpg" alt="sddsd"/>
             </div>  
           </div>
       </div>
