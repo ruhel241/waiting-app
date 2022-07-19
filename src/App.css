@@ -7,10 +7,11 @@
 .App {
   text-align: center;
   border: solid 1px;
-  width: 30%;
+  width: 100%;
   margin: 0 auto;
   background: #fff;
   border-radius: 5px;
+  max-width: 435px;
 }
 
 .App-logo {

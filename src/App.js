@@ -66,7 +66,6 @@ class App extends Component  {
     } = this.state;
 
     const changeHandler = (e) => {
-      console.log(this.state.isEndDateTime);
       this.setState({
         endDateTime: e,
         isEndDateTime: false
@@ -189,7 +188,7 @@ class App extends Component  {
               </div>  
             </div>
 
-            <div className="timer-hide">
+            <div className="timer-hide" style={{display: "none"}}>
               <p className="_sale-booster-hits">
                 Congratulations
               </p>
@@ -200,7 +199,6 @@ class App extends Component  {
                 <img src="/images/1.jpg" alt="sddsd"/>
               </div> 
             </div>
-  
           </div>
       </div>
     )
