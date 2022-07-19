@@ -118,6 +118,9 @@ class App extends Component  {
             document.getElementById("_timer_hours").innerHTML = 0 
             document.getElementById("_timer_minutes").innerHTML = 0
             document.getElementById("_timer_seconds").innerHTML = 0
+            
+            document.getElementsByClassName('timer-show')[0].style.display = 'none';
+            document.getElementsByClassName('timer-hide')[0].style.display = 'block';
           }
     }, 1000);
 
@@ -148,10 +151,11 @@ class App extends Component  {
           }
           
           <div className="_sale_booster_countdown_wrap _sale-booster-countdown-bottom">
-            <p className="_sale-booster-hits">
-              You are waiting to meet your <span id="category">"Partner"</span> and the time is left
-            </p>
-              
+            <div className="timer-show"> 
+              <p className="_sale-booster-hits">
+                You are waiting to meet your <span id="category">"Partner"</span> and the time is left
+              </p>
+                
               <div className="_sale-booster-countdown">
                 <div className="waiting_days_count">
                   <div className="_sale-discount-countdown-time"> 
@@ -175,13 +179,28 @@ class App extends Component  {
                   </div>
                 </div>
               </div>
-            <p className="_sale-booster-hits">
-                When the day and timer hits zero, your heartbeat will go so fast.....
-            </p>
 
-            <div className="image"> 
-              <img src="/images/4.jpg" alt="sddsd"/>
-            </div>  
+              <p className="_sale-booster-hits">
+                When the day and timer hits zero, your heartbeat will go so fast.....
+              </p>
+
+              <div className="image"> 
+                <img src="/images/4.jpg" alt="sddsd"/>
+              </div>  
+            </div>
+
+            <div className="timer-hide">
+              <p className="_sale-booster-hits">
+                Congratulations
+              </p>
+              <div className="image"> 
+                <img src="/images/5.jpg" alt="sddsd"/>
+              </div> 
+              <div className="image"> 
+                <img src="/images/1.jpg" alt="sddsd"/>
+              </div> 
+            </div>
+  
           </div>
       </div>
     )
